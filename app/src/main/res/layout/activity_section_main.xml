@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginLeft="60dp"
+            android:layout_marginLeft="30dp"
             android:orientation="vertical">
 
             <TextView
@@ -44,15 +44,23 @@
                 />
 
         </LinearLayout>
-        <androidx.cardview.widget.CardView
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="6dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="8dp"
             android:layout_marginTop="40dp"
-            android:layout_marginEnd="-10dp"
-            app:cardBackgroundColor="#222">
+            android:layout_marginEnd="-12dp"
+            android:background="@drawable/card_background_gradient"
+            android:padding="0dp">
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="2dp"
+                app:strokeColor="#0FF"
+                app:cardBackgroundColor="@android:color/transparent">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -60,58 +68,87 @@
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
                 android:padding="20dp" />
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
+            </com.google.android.material.card.MaterialCardView>
+        </FrameLayout>
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="6dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="-10dp"
-            app:cardBackgroundColor="#222">
-            <TextView
+            android:layout_marginEnd="-12dp"
+            android:background="@drawable/card_background_gradient"
+            android:padding="0dp">
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="● Administrar Cliente"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                android:padding="20dp" />
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="2dp"
+                app:strokeColor="#0FF"
+                app:cardBackgroundColor="@android:color/transparent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="● Administrar Cliente"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:padding="20dp" />
+            </com.google.android.material.card.MaterialCardView>
+        </FrameLayout>
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="6dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="-10dp"
-            app:cardBackgroundColor="#222">
-            <TextView
+            android:layout_marginEnd="-12dp"
+            android:background="@drawable/card_background_gradient"
+            android:padding="0dp">
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="● Inscribir en Actividad"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                android:padding="20dp" />
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="2dp"
+                app:strokeColor="#0FF"
+                app:cardBackgroundColor="@android:color/transparent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="● Inscribir en Actividad"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:padding="20dp" />
+            </com.google.android.material.card.MaterialCardView>
+        </FrameLayout>
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="6dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="-10dp"
-            app:cardBackgroundColor="#222">
-            <TextView
+            android:layout_marginEnd="-12dp"
+            android:background="@drawable/card_background_gradient"
+            android:padding="0dp">
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="● Cuotas Vencidas"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                android:padding="20dp" />
-        </androidx.cardview.widget.CardView>
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="2dp"
+                app:strokeColor="#0FF"
+                app:cardBackgroundColor="@android:color/transparent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="● Cuotas Vencidas"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:padding="20dp" />
+            </com.google.android.material.card.MaterialCardView>
+        </FrameLayout>
+
 
     </LinearLayout>
 </ScrollView>
