@@ -65,6 +65,7 @@
 
         </LinearLayout>
         <FrameLayout
+            android:onClick="launchInscribirCliente"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -91,6 +92,7 @@
             </com.google.android.material.card.MaterialCardView>
         </FrameLayout>
         <FrameLayout
+            android:onClick="launchAdministrarCliente"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -117,6 +119,7 @@
             </com.google.android.material.card.MaterialCardView>
         </FrameLayout>
         <FrameLayout
+            android:onClick="launchInscribirActividad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -143,6 +146,7 @@
             </com.google.android.material.card.MaterialCardView>
         </FrameLayout>
         <FrameLayout
+            android:onClick="launchCuotasVencidas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
