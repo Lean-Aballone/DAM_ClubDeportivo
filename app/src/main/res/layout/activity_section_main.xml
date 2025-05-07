@@ -15,11 +15,31 @@
         android:padding="16dp"
         android:paddingEnd="0dp">
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        app:srcCompat="@drawable/loginicon"
-        android:layout_margin="12dp" />
+        <LinearLayout
+            android:layout_marginBottom="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_weight="0"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="0dp"
+                app:srcCompat="@drawable/loginicon" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_weight="0"
+                app:srcCompat="@drawable/ic_launcher_foreground" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
