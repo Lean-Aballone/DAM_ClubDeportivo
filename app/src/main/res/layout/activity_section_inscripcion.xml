@@ -33,11 +33,11 @@
                 android:layout_weight="2" />
 
             <ImageButton
+                android:onClick="returnToMain"
                 android:layout_weight="1"
                 android:id="@+id/imageButton"
                 android:layout_width="32dp"
                 android:layout_height="match_parent"
-
                 android:backgroundTint="#00FFFFFF"
                 android:src="@drawable/homeicon" />
 
