@@ -69,19 +69,16 @@
         android:paddingLeft="10dp"
         android:textColor="@android:color/black"
         android:textColorHint="#666"
-        app:layout_constraintEnd_toEndOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="@+id/buttonSignIn"
         app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="@+id/button"
+        app:layout_constraintStart_toStartOf="@+id/buttonSignIn"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/buttonSignIn"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
         android:background="@drawable/btngradient"
-        android:drawableTint="@color/design_default_color_primary"
-        android:drawableTintMode="src_over"
-        android:foreground="@drawable/btngradient"
         android:text="Sign in"
         android:textColor="@color/white"
         android:textSize="24sp"
@@ -99,5 +96,26 @@
         app:layout_constraintStart_toStartOf="@+id/editTextText"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/loginicon" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="526dp" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="left"
+        app:constraint_referenced_ids="main" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="250dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
