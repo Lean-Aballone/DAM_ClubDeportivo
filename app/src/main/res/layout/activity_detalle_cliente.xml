@@ -1,10 +1,190 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetalleCliente">
+    android:background="@color/black"
+    tools:context=".MainActivity">
 
+    <!-- Top Fixed Section (e.g., logo or title) -->
+    <LinearLayout
+        android:id="@+id/topSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/loginicon" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/ic_launcher_foreground" />
+    </LinearLayout>
+
+    <!-- Content Section Below -->
+    <ScrollView
+        android:id="@+id/contentScroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/topSection"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:id="@+id/contentLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+
+            <TextView
+                android:id="@+id/title3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="Detalle Cliente"
+                android:textColor="#FFFFFF"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <!-- Add your content elements here -->
+            <!-- e.g., EditTexts, Buttons, etc. -->
+
+            <LinearLayout
+                android:id="@+id/contentLayoutDatos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:layout_margin="8dp"
+
+                android:background="@drawable/btngradient">
+
+                <!-- Título: Nombre y Apellido -->
+                <TextView
+                    android:id="@+id/nombreApellido"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nombre Apellido"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginBottom="16dp" />
+
+                <!-- Datos secundarios -->
+                <TextView
+                    android:id="@+id/socio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Socio: 123"
+                    android:textColor="#CCCCCC"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/fechaInscripcion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Fecha de inscripción: 2023-01-01"
+                    android:textColor="#CCCCCC"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/telefono"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Teléfono: 123456789"
+                    android:textColor="#CCCCCC"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/dni"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="DNI: 98765432"
+                    android:textColor="#CCCCCC"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/direccion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Dirección: Calle Falsa 123"
+                    android:textColor="#CCCCCC"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="8dp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/imprimirCarnet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btngradient"
+                android:drawableTint="@color/design_default_color_primary"
+                android:drawableTintMode="src_over"
+                android:foreground="@drawable/btngradient"
+                android:paddingStart="40dp"
+                android:paddingEnd="40dp"
+                android:layout_marginTop="24dp"
+                android:text="Imprimir Carnet"
+                android:textColor="@color/white"
+                android:textSize="24sp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+
+            <Button
+                android:id="@+id/registarPago"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btngradient"
+                android:drawableTint="@color/design_default_color_primary"
+                android:drawableTintMode="src_over"
+                android:foreground="@drawable/btngradient"
+                android:paddingStart="40dp"
+                android:paddingEnd="40dp"
+                android:text="Registrar Pago"
+                android:textColor="@color/white"
+                android:textSize="24sp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+
+            <Button
+                android:id="@+id/inscribirActividad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btngradient"
+                android:drawableTint="@color/design_default_color_primary"
+                android:drawableTintMode="src_over"
+                android:foreground="@drawable/btngradient"
+                android:paddingStart="40dp"
+                android:paddingEnd="40dp"
+                android:text="Inscribir Actividad"
+                android:textColor="@color/white"
+                android:textSize="24sp" />
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
