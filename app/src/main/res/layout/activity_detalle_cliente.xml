@@ -139,13 +139,14 @@
                 android:id="@+id/imprimirCarnet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
                 android:background="@drawable/btngradient"
                 android:drawableTint="@color/design_default_color_primary"
                 android:drawableTintMode="src_over"
                 android:paddingStart="40dp"
                 android:paddingEnd="40dp"
-                android:layout_marginTop="24dp"
                 android:text="Imprimir Carnet"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textColor="@color/white"
                 android:textSize="24sp" />
 
@@ -163,6 +164,7 @@
                 android:paddingStart="40dp"
                 android:paddingEnd="40dp"
                 android:text="Registrar Pago"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textColor="@color/white"
                 android:textSize="24sp" />
 
@@ -180,6 +182,7 @@
                 android:paddingStart="40dp"
                 android:paddingEnd="40dp"
                 android:text="Inscribir Actividad"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textColor="@color/white"
                 android:textSize="24sp" />
         </LinearLayout>
