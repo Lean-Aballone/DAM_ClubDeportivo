@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".sectionInscripcion">
+    tools:context=".sectionInscripcion"
+    android:fitsSystemWindows="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -202,7 +203,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:paddingStart="40dp"
                     android:paddingEnd="40dp"
                     android:id="@+id/button"
