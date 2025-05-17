@@ -50,8 +50,8 @@ class sectionMain : AppCompatActivity() {
         startActivity(intent)
     }
     fun launchAdministrarCliente(view: View){
-        //val intent = Intent(this, sectionAdministrar::class.java)
-        //startActivity(intent)
+        val intent = Intent(this, sectionAdministrar::class.java)
+        startActivity(intent)
     }
     fun launchInscribirActividad(view: View){
         //val intent = Intent(this, sectionActividades::class.java)
