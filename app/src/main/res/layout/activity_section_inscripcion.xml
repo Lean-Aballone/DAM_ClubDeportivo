@@ -134,11 +134,10 @@
                     android:layout_height="wrap_content"
                     android:checked="true"
                     android:textIsSelectable="false"
-                    android:thumbTint="@color/white"
-                    android:thumbTintMode="src_over"
-                    android:trackTint="#0FF"
-                    android:trackTintMode="src_over"
-                    app:switchPadding="16dp" />
+                    app:switchPadding="16dp"
+                    app:thumbTint="#FFFFFF"
+                    app:trackTint="#32adc6"
+                    app:trackTintMode="src_in" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -178,11 +177,10 @@
                     android:layout_height="wrap_content"
                     android:checked="false"
                     android:textIsSelectable="false"
-                    android:thumbTint="@color/white"
-                    android:thumbTintMode="src_in"
-                    android:trackTint="#686868"
-                    android:trackTintMode="src_over"
-                    app:switchPadding="16dp" />
+                    app:switchPadding="16dp"
+                    app:thumbTint="#FFFFFF"
+                    app:trackTint="#686868"
+                    app:trackTintMode="src_in" />
 
                 <TextView
                     android:id="@+id/textViewNoSocio"
@@ -207,14 +205,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/btngradient"
-                    android:drawableTint="@color/design_default_color_primary"
-                    android:drawableTintMode="src_over"
-                    android:foreground="@drawable/btngradient"
-                    android:paddingStart="40dp"
-                    android:paddingEnd="40dp"
                     android:text="Ingresar"
                     android:textColor="@color/white"
-                    android:textSize="24sp"
+                    android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
