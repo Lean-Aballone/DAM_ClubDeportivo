@@ -30,9 +30,16 @@
 
         <ImageButton
             android:id="@+id/imageButton"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            app:srcCompat="@drawable/ic_launcher_foreground" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="0dp"
+            android:layout_weight="0"
+            android:backgroundTint="#00FFFFFF"
+            android:onClick="returnToMain"
+            android:padding="10dp"
+            app:srcCompat="@drawable/ic_home" />
     </LinearLayout>
 
     <!-- Content Section Below -->
