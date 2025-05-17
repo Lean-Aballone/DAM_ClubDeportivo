@@ -3,21 +3,47 @@ package com.example.clubdeportivo
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.drawerlayout.widget.DrawerLayout
+import com.google.android.material.navigation.NavigationView
 
 class sectionMain : AppCompatActivity() {
+
+    private lateinit var drawerLayout: DrawerLayout
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_section_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        drawerLayout = findViewById(R.id.main)
+        val btnOpenDrawer: ImageButton = findViewById(R.id.btn_open_drawer)
+
+        btnOpenDrawer.setOnClickListener {
+            if (drawerLayout.isDrawerOpen(GravityCompat.END)) {
+                drawerLayout.closeDrawer(GravityCompat.END)
+            } else {
+                drawerLayout.openDrawer(GravityCompat.END)
+            }
         }
+        val navView: NavigationView = findViewById(R.id.nav_view)
+        navView.setNavigationItemSelectedListener {
+            drawerLayout.closeDrawer(GravityCompat.END)
+            true
+        }
+
+    }
+    fun closeSession(view: View){
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+    }
+    fun closeDrawer(view: View){
+        drawerLayout.closeDrawer(GravityCompat.END)
     }
     fun launchInscribirCliente(view: View){
         val intent = Intent(this, sectionInscripcion::class.java)
