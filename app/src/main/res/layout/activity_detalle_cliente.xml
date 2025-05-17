@@ -75,7 +75,7 @@
                 android:padding="16dp"
                 android:layout_margin="8dp"
 
-                android:background="@drawable/btngradient">
+                android:background="@drawable/green_gradient">
 
                 <!-- Título: Nombre y Apellido -->
                 <TextView
