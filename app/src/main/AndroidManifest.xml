@@ -23,6 +23,8 @@
             android:exported="false" />
         <activity android:name=".DetalleCliente"
             android:exported="false" />
+        <activity android:name=".sectionActividad"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
