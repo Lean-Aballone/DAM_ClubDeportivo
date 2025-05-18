@@ -21,6 +21,8 @@
         <activity
             android:name=".sectionMain"
             android:exported="false" />
+        <activity android:name=".DetalleCliente"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

@@ -49,6 +49,10 @@ class sectionAdministrar : AppCompatActivity() {
             button.paint.shader = textShader
             button.invalidate()
         }
+        button.setOnClickListener {
+            val intent = Intent(this, DetalleCliente::class.java)
+            startActivity(intent)
+        }
     }
     fun returnToMain(view: View){
         val intent = Intent(this, sectionMain::class.java)
