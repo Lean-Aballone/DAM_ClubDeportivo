@@ -54,7 +54,7 @@ class sectionMain : AppCompatActivity() {
         //startActivity(intent)
     }
     fun launchCuotasVencidas(view: View){
-        //val intent = Intent(this, sectionCuotas::class.java)
-        //startActivity(intent)
+        val intent = Intent(this, sectionCuotas::class.java)
+        startActivity(intent)
     }
 }
