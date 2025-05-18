@@ -50,8 +50,8 @@ class sectionActividad : AppCompatActivity() {
             button.invalidate()
         }
         button.setOnClickListener {
-            //val intent = Intent(this, actividades::class.java)
-            //startActivity(intent)
+            val intent = Intent(this, actividades::class.java)
+            startActivity(intent)
         }
     }
     fun returnToMain(view: View){

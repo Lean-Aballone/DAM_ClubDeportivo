@@ -13,6 +13,9 @@
         android:theme="@style/Theme.ClubDeportivo"
         tools:targetApi="31">
         <activity
+            android:name=".actividades"
+            android:exported="false" />
+        <activity
             android:name=".sectionAdministrar"
             android:exported="false" />
         <activity
@@ -21,9 +24,11 @@
         <activity
             android:name=".sectionMain"
             android:exported="false" />
-        <activity android:name=".DetalleCliente"
+        <activity
+            android:name=".DetalleCliente"
             android:exported="false" />
-        <activity android:name=".sectionActividad"
+        <activity
+            android:name=".sectionActividad"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
