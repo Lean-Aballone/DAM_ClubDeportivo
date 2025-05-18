@@ -95,6 +95,10 @@ class actividades : AppCompatActivity() {
             }
         }
         gridView.adapter = adapter
+
+        // TODO:
+        // val selected = items.filter { it.isChecked }
+
     }
     fun returnToMain(view: View){
         val intent = Intent(this, sectionMain::class.java)
