@@ -4,30 +4,39 @@ import android.content.Intent
 import android.graphics.LinearGradient
 import android.graphics.Shader
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
-import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class MainActivity : AppCompatActivity() {
+class DetalleCliente : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.login)
-        val button = findViewById<Button>(R.id.buttonSignIn)
-        button.setOnClickListener {
-            val intent = Intent(this, sectionMain::class.java)
-            startActivity(intent)
-        }
+        setContentView(R.layout.activity_detalle_cliente)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        val buttons = arrayOf(
+            findViewById<Button>(R.id.imprimirCarnet),
+            findViewById<Button>(R.id.registarPago),
+            findViewById<Button>(R.id.inscribirActividad)
+        )
+
+        findViewById<Button>(R.id.inscribirActividad).setOnClickListener {
+            val intent = Intent(this, actividades::class.java)
+            startActivity(intent)
+        }
+
+    }
+
+    fun makeButtonGraddient(button: Button){
         button.post {
-            val width = button.width.toFloat()
+            val width = button.paint.measureText(button.text.toString()) + button.paddingStart.toFloat()
             val textShader = LinearGradient(
                 0f, 0f, width, 0f,
                 intArrayOf(
@@ -40,7 +49,10 @@ class MainActivity : AppCompatActivity() {
             button.paint.shader = textShader
             button.invalidate()
         }
+    }
 
-
+    fun returnToMain(view: View){
+        val intent = Intent(this, sectionMain::class.java)
+        startActivity(intent)
     }
 }
