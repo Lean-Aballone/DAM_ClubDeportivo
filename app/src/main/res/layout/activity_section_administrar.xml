@@ -7,29 +7,43 @@
     android:background="@color/black"
     tools:context=".sectionAdministrar">
 
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_margin="0dp"
+            android:layout_weight="1"
+            android:padding="2dp"
+            app:srcCompat="@drawable/loginicon" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2" />
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="0dp"
+            android:layout_weight="0"
+            android:backgroundTint="#00FFFFFF"
+            android:onClick="returnToMain"
+            android:padding="10dp"
+            app:srcCompat="@drawable/ic_home" />
+    </LinearLayout>
+
     <!-- Botón de inicio (arriba a la derecha) -->
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="49dp"
-        android:layout_height="48dp"
-        android:backgroundTint="#00FFFFFF"
-        android:src="@drawable/homeicon"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp" />
 
     <!-- Icono principal (arriba a la izquierda) -->
-    <ImageView
-        android:id="@+id/imageViewIcon"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:padding="2dp"
-        app:srcCompat="@drawable/loginicon"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp" />
 
     <!-- Título -->
 
@@ -38,24 +52,29 @@
         android:id="@+id/textViewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="Administrar Clientes"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="120dp"
+        android:text="Administrar Cliente"
         android:textColor="#FFFFFF"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.441"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageViewIcon" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <!-- Texto "DNI / ID Socio" -->
 
     <!-- Campo para nombre -->
     <Spinner
-        android:id="@+id/spinnerTipoDocumento"
+        android:paddingStart="15dp"
+        android:id="@+id/spinner"
         android:layout_width="246dp"
-        android:layout_height="58dp"
+        android:layout_height="48dp"
         android:layout_marginTop="68dp"
+        android:background="@drawable/spinner_background"
+        android:popupBackground="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,12 +92,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/spinnerTipoDocumento" />
+        app:layout_constraintTop_toBottomOf="@id/spinner" />
 
     <EditText
         android:id="@+id/editTextNombre"
         android:layout_width="251dp"
-        android:layout_height="66dp"
+        android:layout_height="45dp"
         android:background="#BDBDBD"
         android:inputType="text"
         android:paddingStart="10dp"
@@ -89,17 +108,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp" />
 
-    <!-- Botón Ingresar -->
-    <Button
-        android:id="@+id/buttonIngresar"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/btngradient"
         android:paddingStart="40dp"
         android:paddingEnd="40dp"
+        android:background="@drawable/btngradient"
         android:text="Ingresar"
         android:textColor="@color/white"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintTop_toBottomOf="@id/editTextNombre"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
