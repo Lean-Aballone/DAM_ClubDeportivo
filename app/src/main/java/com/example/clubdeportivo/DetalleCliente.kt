@@ -32,6 +32,11 @@ class DetalleCliente : AppCompatActivity() {
             startActivity(intent)
         }
 
+        findViewById<Button>(R.id.registarPago).setOnClickListener {
+            val intent = Intent(this, registro_pago::class.java)
+            startActivity(intent)
+        }
+
     }
 
     fun makeButtonGraddient(button: Button){
