@@ -16,10 +16,25 @@
             android:name=".cuotaVencida"
             android:exported="false" />
         <activity
+            android:name=".registro_pago"
+            android:exported="false" />
+        <activity
+            android:name=".actividades"
+            android:exported="false" />
+        <activity
+            android:name=".sectionAdministrar"
+            android:exported="false" />
+        <activity
             android:name=".sectionInscripcion"
             android:exported="false" />
         <activity
             android:name=".sectionMain"
+            android:exported="false" />
+        <activity
+            android:name=".DetalleCliente"
+            android:exported="false" />
+        <activity
+            android:name=".sectionActividad"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
