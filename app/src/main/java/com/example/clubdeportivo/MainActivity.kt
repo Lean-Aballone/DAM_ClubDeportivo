@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         val button = findViewById<Button>(R.id.buttonSignIn)
         val user = findViewById<EditText>(R.id.editTextText)
         val pass = findViewById<EditText>(R.id.editTextTextPassword)
+
         button.setOnClickListener {
             if (dbHelper.isValidUser(user.text.toString().trim(), pass.text.toString().trim())) {
                 Toast.makeText(
@@ -38,26 +39,13 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show()
             }
         }
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        button.post {
-            val width = button.width.toFloat()
-            val textShader = LinearGradient(
-                0f, 0f, width, 0f,
-                intArrayOf(
-                    0xFF00FFFF.toInt(), // #0FF
-                    0xFFFF00FF.toInt() // #F0F
-                ),
-                null,
-                Shader.TileMode.CLAMP
-            )
-            button.paint.shader = textShader
-            button.invalidate()
-        }
 
-
+        Utils.gradientPostProcessing(button)
     }
 }
