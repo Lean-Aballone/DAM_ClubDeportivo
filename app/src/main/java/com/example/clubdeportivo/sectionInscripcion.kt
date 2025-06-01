@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import androidx.core.view.WindowInsetsCompat
 
 class sectionInscripcion : AppCompatActivity() {
@@ -21,6 +22,16 @@ class sectionInscripcion : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        var ClientesHelper = ClientesHelper(this)
+
+        val editNombre = findViewById<EditText>(editTextNombre)
+        val editApellido = findViewById<EditText>(editTextApellido)
+        val editDNI = findViewById<EditText>(editTextDNI)
+        val editTelefono = findViewById<EditText>(editTextTelefono)
+        val editDireccion = findViewById<EditText>(editTextDireccion)
+        val editAptoFisico = findViewById<SwitchCompat>(switchCompatAptoFisico)
+        val editSocio = findViewById<SwitchCompat>(switchCompatSocio)
 
         val button = findViewById<Button>(R.id.button)
         button.post {

@@ -1,16 +1,31 @@
 package com.example.clubdeportivo
 
+import android.content.ContentValues
 import android.content.Context
 
-class LoginHelper(context: Context): DBHelper(context) {
-    fun isValidUser(name: String, password: String): Boolean{
+class ClientesHelper(context: Context): DBHelper(context) {
+
+    fun inscribirCliente(nombre: string, apellido: string, dni: String, telefono: string, direccion, string): Boolean{
+        val db = writableDatabase
+        val valores = ContentValues().apply {
+            put("nombre", nombre)
+            put("apellido", apellido)
+            put("dni", dni)
+            put("telefono", telefono)
+            put("direccion", direccion)
+        }
+
+        val resultado = db.insert("clientes", null, valores)
+        return resultado != -1L
+    }
+
+    fun getClienteByDNI(dni: String): Cliente{
         val db = readableDatabase
         val cursor = db.rawQuery(
-            "SELECT * FROM usuario WHERE NombreUsu = ? AND PassUsu = ?",
-            arrayOf(name, password)
+            "SELECT * FROM clientes WHERE DNI = ?",
+            arrayOf(dni)
         )
-        val isValid = cursor.count > 0
         cursor.close()
-        return isValid
+        return cursor
     }
 }
