@@ -30,12 +30,12 @@ open class DBHelper(context: Context?): SQLiteOpenHelper(context,"ClubDeportivoD
                 Id INTEGER PRIMARY KEY,
                 Nombre TEXT,
                 Apellido TEXT,
-                DNI INTEGER,
+                DNI INTEGER UNIQUE,
                 Telefono TEXT,
                 Direccion TEXT,
-                Apto_Fisico BOOLEAN,
+                AptoFisico BOOLEAN,
                 Socio BOOLEAN,
-                Fecha_Inscripcion DATE
+                FechaInscripcion DATETIME DEFAULT CURRENT_TIMESTAMP
             );
         """.trimIndent()
 
