@@ -4,7 +4,7 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
-open class DBHelper(context: Context?): SQLiteOpenHelper(context,"ClubDeportivoDB",null,1){
+open class DBHelper(context: Context?): SQLiteOpenHelper(context,"ClubDeportivoDB",null,2){
 
     override fun onCreate(db: SQLiteDatabase) {
         val createTableRoles = """
@@ -25,6 +25,20 @@ open class DBHelper(context: Context?): SQLiteOpenHelper(context,"ClubDeportivoD
             );
         """.trimIndent()
 
+        val createTableClientes = """
+            CREATE TABLE clientes (
+                Id INTEGER PRIMARY KEY,
+                Nombre TEXT,
+                Apellido TEXT,
+                DNI INTEGER UNIQUE,
+                Telefono TEXT,
+                Direccion TEXT,
+                AptoFisico BOOLEAN,
+                Socio BOOLEAN,
+                FechaInscripcion DATETIME DEFAULT CURRENT_TIMESTAMP
+            );
+        """.trimIndent()
+
         val insertIntoRoles = """
             INSERT INTO roles (RolUsu, NomRol) VALUES
             (99, 'Administrador'),
@@ -40,7 +54,7 @@ open class DBHelper(context: Context?): SQLiteOpenHelper(context,"ClubDeportivoD
         """.trimIndent()
 
         // Orden en el cual se ejecutarán las sentencias.
-        val sql = arrayOf(createTableRoles,insertIntoRoles,createTableUsuario,insertIntoUsuario)
+        val sql = arrayOf(createTableRoles,insertIntoRoles,createTableUsuario,insertIntoUsuario, createTableClientes)
         sql.forEach { query ->  db.execSQL(query)}
     }
 
@@ -51,6 +65,7 @@ open class DBHelper(context: Context?): SQLiteOpenHelper(context,"ClubDeportivoD
     ) {
         db.execSQL("DROP TABLE IF EXISTS roles")
         db.execSQL("DROP TABLE IF EXISTS usuario")
+        db.execSQL("DROP TABLE IF EXISTS clientes")
         onCreate(db)
     }
 }
