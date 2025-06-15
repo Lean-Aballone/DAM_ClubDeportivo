@@ -37,20 +37,7 @@ class sectionInscripcion : AppCompatActivity() {
         val editSocio = findViewById<SwitchCompat>(R.id.switchCompatSocio)
 
         val button = findViewById<Button>(R.id.button)
-        button.post {
-            val width = button.paint.measureText(button.text.toString()) + button.paddingStart.toFloat()
-            val textShader = LinearGradient(
-                0f, 0f, width, 0f,
-                intArrayOf(
-                    0xFF00FFFF.toInt(), // #0FF
-                    0xFFFF00FF.toInt() // #F0F
-                ),
-                null,
-                Shader.TileMode.CLAMP
-            )
-            button.paint.shader = textShader
-            button.invalidate()
-        }
+        Utils.gradientPostProcessing(button)
         
         button.setOnClickListener {
             val nombre = editNombre.text.toString().trim()
