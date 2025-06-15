@@ -12,6 +12,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.clubdeportivo.entidades.User
 
 class MainActivity : AppCompatActivity() {
 
@@ -34,9 +35,10 @@ class MainActivity : AppCompatActivity() {
                     Toast.LENGTH_SHORT
                 ).show()
                 val intent = Intent(this, sectionMain::class.java)
+                intent.putExtra("user", User("Usuario_a", "a", "Administrador"))
                 startActivity(intent)
             } else {
-                Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "com.example.clubdeportivo.Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show()
             }
         }
 
