@@ -93,8 +93,17 @@ open class DBHelper(context: Context?): SQLiteOpenHelper(context,"ClubDeportivoD
             (6,'Sábados', '16hs', '17:30hs');
         """.trimIndent()
 
+        val createTableClienteActividad = """
+            CREATE TABLE cliente_actividad (
+            IdCliente INTEGER,
+            IdActividad INTEGER,
+            PRIMARY KEY (IdCliente, IdActividad),
+            FOREIGN KEY (IdCliente) REFERENCES clientes(Id),
+            FOREIGN KEY (IdActividad) REFERENCES actividades(Id) );
+        """.trimIndent()
+
         // Orden en el cual se ejecutarán las sentencias.
-        val sql = arrayOf(createTableRoles,insertIntoRoles,createTableUsuario,insertIntoUsuario, createTableClientes, createTableActividades, createTableDeportes, insertIntoDeportes, insertIntoActividades)
+        val sql = arrayOf(createTableRoles,insertIntoRoles,createTableUsuario,insertIntoUsuario, createTableClientes, createTableActividades, createTableDeportes, insertIntoDeportes, insertIntoActividades, createTableClienteActividad)
         sql.forEach { query ->  db.execSQL(query)}
     }
 
