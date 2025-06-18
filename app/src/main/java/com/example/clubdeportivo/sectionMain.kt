@@ -22,7 +22,7 @@ class sectionMain : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_section_main)
-        val usuario = intent.getSerializableExtra("user") as? User
+        val usuario = SessionManager.currentUser
         val userDetails = findViewById<TextView>(R.id.userDetails)
         userDetails.text = usuario?.nombre.toString() + " (" + usuario?.rol.toString() + ")"
         drawerLayout = findViewById(R.id.main)
