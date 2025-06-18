@@ -53,8 +53,48 @@ open class DBHelper(context: Context?): SQLiteOpenHelper(context,"ClubDeportivoD
             ('Usuario_c', 'c', 101);
         """.trimIndent()
 
+        val createTableActividades = """
+            CREATE TABLE actividades (
+                Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                IdDeporte INTEGER,
+                Dias TEXT,
+                HorarioInicio TEXT,
+                HorarioFin TEXT,
+                FOREIGN KEY (IdDeporte) REFERENCES deportes(IdDeporte)
+            )
+        """.trimIndent()
+
+        val createTableDeportes = """
+            CREATE TABLE deportes (
+                IdDeporte INTEGER PRIMARY KEY,
+                Tipo TEXT
+            )
+        """.trimIndent()
+
+        val insertIntoDeportes = """
+            INSERT INTO deportes (IdDeporte, Tipo) VALUES
+            (0, 'Futbol'),
+            (1, 'Hockey'),
+            (2, 'Voley'),
+            (3, 'Basquetbol'),
+            (4, 'Tenis'),
+            (5, 'Natacion'),
+            (6, 'Tiro_con_Arco');            
+        """.trimIndent()
+
+        val insertIntoActividades = """
+            INSERT INTO actividades (IdDeporte, Dias, HorarioInicio, HorarioFin) VALUES
+            (0,'Lunes y Jueves','18hs','19:30hs'),
+            (1,'Lunes y Viernes','16hs','17:50hs'),
+            (2,'Martes y Jueves','20hs','21hs'),
+            (3,'Miércoles', '18hs','19hs'),
+            (4,'Sábados', '18hs','19:30hs'),
+            (5,'Martes y Viernes', '18hs', '19hs'),
+            (6,'Sábados', '16hs', '17:30hs');
+        """.trimIndent()
+
         // Orden en el cual se ejecutarán las sentencias.
-        val sql = arrayOf(createTableRoles,insertIntoRoles,createTableUsuario,insertIntoUsuario, createTableClientes)
+        val sql = arrayOf(createTableRoles,insertIntoRoles,createTableUsuario,insertIntoUsuario, createTableClientes, createTableActividades, createTableDeportes, insertIntoDeportes, insertIntoActividades)
         sql.forEach { query ->  db.execSQL(query)}
     }
 
