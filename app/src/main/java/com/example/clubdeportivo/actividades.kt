@@ -13,6 +13,7 @@ import android.widget.CheckBox
 import android.widget.GridView
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -39,11 +40,6 @@ class actividades : AppCompatActivity() {
         val button = findViewById<Button>(R.id.button)
         Utils.gradientPostProcessing(button)
 
-        button.setOnClickListener {
-            val intent = Intent(this, sectionMain::class.java)
-            startActivity(intent)
-        }
-
         val gridView: GridView = findViewById(R.id.gridView)
 
         val dbHelper = ActividadesHelper(this)
@@ -63,6 +59,22 @@ class actividades : AppCompatActivity() {
                 Deporte.Tiro_con_Arco -> R.drawable.arco
             }
             GridItem(nombre, description, imageResId)
+        }
+
+        button.setOnClickListener {
+            val selectedIds = actividadesList
+                .filterIndexed { index, _ -> items[index].isChecked }
+                .map { it.id }
+
+            val idCliente = intent.getIntExtra("IdCliente", -1)
+            if (idCliente != -1) {
+                dbHelper.inscribirClienteEnActividades(idCliente, selectedIds)
+                Toast.makeText(this, "Actividades guardadas", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, sectionMain::class.java)
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "Error: cliente no identificado", Toast.LENGTH_SHORT).show()
+            }
         }
 
         val adapter = object : ArrayAdapter<GridItem>(
@@ -94,10 +106,8 @@ class actividades : AppCompatActivity() {
         }
         gridView.adapter = adapter
 
-        // TODO:
-        // val selected = items.filter { it.isChecked }
-
     }
+
     fun returnToMain(view: View){
         val intent = Intent(this, sectionMain::class.java)
         startActivity(intent)
