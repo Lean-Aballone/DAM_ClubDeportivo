@@ -1,8 +1,6 @@
 package com.example.clubdeportivo
 
 import android.content.Intent
-import android.graphics.LinearGradient
-import android.graphics.Shader
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -43,7 +41,10 @@ class actividades : AppCompatActivity() {
         val gridView: GridView = findViewById(R.id.gridView)
 
         val dbHelper = ActividadesHelper(this)
+        val idCliente = intent.getIntExtra("IdCliente", -1)
+
         val actividadesList = dbHelper.getActividadesList()
+        val actividadesInscripto = if (idCliente != -1) dbHelper.getIdsActividadesDeCliente(idCliente) else emptyList()
 
         val items = actividadesList.map {
             val nombre = it.deporte.name.replace('_', ' ')
@@ -58,7 +59,10 @@ class actividades : AppCompatActivity() {
                 Deporte.Natacion -> R.drawable.natacion
                 Deporte.Tiro_con_Arco -> R.drawable.arco
             }
-            GridItem(nombre, description, imageResId)
+
+            val isInscripto = it.id in actividadesInscripto
+
+            GridItem(nombre, description, imageResId, isInscripto)
         }
 
         button.setOnClickListener {
@@ -66,10 +70,9 @@ class actividades : AppCompatActivity() {
                 .filterIndexed { index, _ -> items[index].isChecked }
                 .map { it.id }
 
-            val idCliente = intent.getIntExtra("IdCliente", -1)
             if (idCliente != -1) {
-                dbHelper.inscribirClienteEnActividades(idCliente, selectedIds)
-                Toast.makeText(this, "Actividades guardadas", Toast.LENGTH_SHORT).show()
+                dbHelper.updateInscripcionesCliente(idCliente, selectedIds)
+                Toast.makeText(this, "Inscripciones actualizadas", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, sectionMain::class.java)
                 startActivity(intent)
             } else {
