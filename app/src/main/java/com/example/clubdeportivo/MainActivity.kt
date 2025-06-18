@@ -1,12 +1,9 @@
 package com.example.clubdeportivo
 
 import android.content.Intent
-import android.graphics.LinearGradient
-import android.graphics.Shader
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -24,8 +21,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.login)
         dbHelper = LoginHelper(this)
         val button = findViewById<Button>(R.id.buttonSignIn)
-        val userField = findViewById<EditText>(R.id.editTextText)
-        val passField = findViewById<EditText>(R.id.editTextTextPassword)
+        val userField = findViewById<EditText>(R.id.username)
+        val passField = findViewById<EditText>(R.id.userPassword)
         var user: String
         var pass: String
         var rol: String
