@@ -17,12 +17,12 @@ import com.google.android.material.navigation.NavigationView
 class sectionMain : AppCompatActivity() {
 
     private lateinit var drawerLayout: DrawerLayout
+    private val usuario = SessionManager.currentUser
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_section_main)
-        val usuario = intent.getSerializableExtra("user") as? User
         val userDetails = findViewById<TextView>(R.id.userDetails)
         userDetails.text = usuario?.nombre.toString() + " (" + usuario?.rol.toString() + ")"
         drawerLayout = findViewById(R.id.main)

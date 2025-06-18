@@ -13,4 +13,24 @@ class LoginHelper(context: Context): DBHelper(context) {
         cursor.close()
         return isValid
     }
+    fun getRol(user: String): String? {
+        val db = readableDatabase
+        val query = """
+        SELECT r.NomRol
+        FROM usuario u
+        JOIN roles r ON u.RolUsu = r.RolUsu
+        WHERE u.NombreUsu = ?
+    """.trimIndent()
+
+        val cursor = db.rawQuery(query, arrayOf(user))
+
+        return if (cursor.moveToFirst()) {
+            val rol = cursor.getString(0)
+            cursor.close()
+            rol
+        } else {
+            cursor.close()
+            null
+        }
+    }
 }
