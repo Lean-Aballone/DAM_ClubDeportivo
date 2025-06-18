@@ -96,5 +96,29 @@ class ActividadesHelper (context: Context): DBHelper(context) {
         return actividades
     }
 
+    fun getIdsActividadesDeCliente(idCliente: Int): List<Int> {
+        val db = readableDatabase
+        val lista = mutableListOf<Int>()
+
+        val query = "SELECT IdActividad FROM cliente_actividad WHERE IdCliente = ?"
+        val cursor = db.rawQuery(query, arrayOf(idCliente.toString()))
+
+        if (cursor.moveToFirst()) {
+            do {
+                lista.add(cursor.getInt(0))
+            } while (cursor.moveToNext())
+        }
+
+        cursor.close()
+        return lista
+    }
+
+    fun updateInscripcionesCliente(idCliente: Int, nuevasIds: List<Int>) {
+        val db = writableDatabase
+
+        db.delete("cliente_actividad", "IdCliente = ?", arrayOf(idCliente.toString()))
+
+        inscribirClienteEnActividades(idCliente, nuevasIds)
+    }
 
 }
