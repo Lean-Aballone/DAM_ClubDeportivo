@@ -1,12 +1,9 @@
 package com.example.clubdeportivo
 
 import android.content.Intent
-import android.graphics.LinearGradient
-import android.graphics.Shader
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -24,18 +21,24 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.login)
         dbHelper = LoginHelper(this)
         val button = findViewById<Button>(R.id.buttonSignIn)
-        val user = findViewById<EditText>(R.id.editTextText)
-        val pass = findViewById<EditText>(R.id.editTextTextPassword)
+        val userField = findViewById<EditText>(R.id.username)
+        val passField = findViewById<EditText>(R.id.userPassword)
+        var user: String
+        var pass: String
+        var rol: String
 
         button.setOnClickListener {
-            if (dbHelper.isValidUser(user.text.toString().trim(), pass.text.toString().trim())) {
+            user = userField.text.toString().trim()
+            pass = passField.text.toString().trim()
+            if (dbHelper.isValidUser(user, pass)) {
                 Toast.makeText(
                     this,
-                    "Bienvenido: " + user.text.toString().trim(),
+                    "Bienvenido: " + user,
                     Toast.LENGTH_SHORT
                 ).show()
                 val intent = Intent(this, sectionMain::class.java)
-                intent.putExtra("user", User("Usuario_a", "a", "Administrador"))
+                rol = dbHelper.getRol(user) ?: "null"
+                SessionManager.currentUser = User(user, pass, rol)
                 startActivity(intent)
             } else {
                 Toast.makeText(this, "com.example.clubdeportivo.Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show()

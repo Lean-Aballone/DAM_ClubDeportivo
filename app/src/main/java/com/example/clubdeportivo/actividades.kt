@@ -1,8 +1,6 @@
 package com.example.clubdeportivo
 
 import android.content.Intent
-import android.graphics.LinearGradient
-import android.graphics.Shader
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +11,7 @@ import android.widget.CheckBox
 import android.widget.GridView
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -37,36 +36,50 @@ class actividades : AppCompatActivity() {
             insets
         }
         val button = findViewById<Button>(R.id.button)
-        button.post {
-            val width = button.paint.measureText(button.text.toString()) + button.paddingStart.toFloat()
-            val textShader = LinearGradient(
-                0f, 0f, width, 0f,
-                intArrayOf(
-                    0xFF00FFFF.toInt(), // #0FF
-                    0xFFFF00FF.toInt() // #F0F
-                ),
-                null,
-                Shader.TileMode.CLAMP
-            )
-            button.paint.shader = textShader
-            button.invalidate()
-        }
-        button.setOnClickListener {
-            val intent = Intent(this, sectionMain::class.java)
-            startActivity(intent)
-        }
+        Utils.gradientPostProcessing(button)
 
         val gridView: GridView = findViewById(R.id.gridView)
 
-        val items = listOf(
-            GridItem("Fútbol", "Lunes y Jueves - 18hs a 19:30hs", R.drawable.futbol),
-            GridItem("Hockey", "Martes y Viernes - 17hs a 18:30hs", R.drawable.hockey),
-            GridItem("Vóley", "Miércoles - 19hs a 20hs", R.drawable.voley),
-            GridItem("Básquetbol", "Lunes y Miércoles - 18hs", R.drawable.basquet),
-            GridItem("Tenis", "Viernes - 17hs a 18hs", R.drawable.tenis),
-            GridItem("Natación", "Sábados - 10hs a 11hs", R.drawable.natacion),
-            GridItem("Tiro con Arco", "Domingos - 11hs", R.drawable.arco)
-        )
+        val dbHelper = ActividadesHelper(this)
+        val idCliente = intent.getIntExtra("IdCliente", -1)
+
+        val actividadesList = dbHelper.getActividadesList()
+        val actividadesInscripto = if (idCliente != -1) dbHelper.getIdsActividadesDeCliente(idCliente) else emptyList()
+
+        val items = actividadesList.map {
+            val nombre = it.deporte.name.replace('_', ' ')
+            val dias = it.dias.joinToString(" y ")
+            val description = "$dias - ${it.HorarioInicio} a ${it.HorarioFin}"
+            val imageResId = when (it.deporte) {
+                Deporte.Futbol -> R.drawable.futbol
+                Deporte.Hockey -> R.drawable.hockey
+                Deporte.Voley -> R.drawable.voley
+                Deporte.Basquetbol -> R.drawable.basquet
+                Deporte.Tenis -> R.drawable.tenis
+                Deporte.Natacion -> R.drawable.natacion
+                Deporte.Tiro_con_Arco -> R.drawable.arco
+            }
+
+            val isInscripto = it.id in actividadesInscripto
+
+            GridItem(nombre, description, imageResId, isInscripto)
+        }
+
+        button.setOnClickListener {
+            val selectedIds = actividadesList
+                .filterIndexed { index, _ -> items[index].isChecked }
+                .map { it.id }
+
+            if (idCliente != -1) {
+                dbHelper.updateInscripcionesCliente(idCliente, selectedIds)
+                Toast.makeText(this, "Inscripciones actualizadas", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, sectionMain::class.java)
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "Error: cliente no identificado", Toast.LENGTH_SHORT).show()
+            }
+        }
+
         val adapter = object : ArrayAdapter<GridItem>(
             this,
             R.layout.grid_item,
@@ -96,10 +109,8 @@ class actividades : AppCompatActivity() {
         }
         gridView.adapter = adapter
 
-        // TODO:
-        // val selected = items.filter { it.isChecked }
-
     }
+
     fun returnToMain(view: View){
         val intent = Intent(this, sectionMain::class.java)
         startActivity(intent)
