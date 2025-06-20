@@ -61,6 +61,19 @@ class DetalleCliente : AppCompatActivity() {
             val outputFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
             val formattedDate = outputFormat.format(cliente.fechaInscripcion)
             fechaInscripcion.text = "Fecha Inscripcion: " + formattedDate
+
+            findViewById<Button>(R.id.inscribirActividad).setOnClickListener {
+                val intent = Intent(this, actividades::class.java)
+                intent.putExtra("IdCliente", cliente.id)
+                startActivity(intent)
+            }
+
+            findViewById<Button>(R.id.registarPago).setOnClickListener {
+                val intent = Intent(this, registro_pago::class.java)
+                intent.putExtra("IdCliente", cliente.id)
+                startActivity(intent)
+            }
+
         } else {
             Toast.makeText(this, "Ha ocurrido un error. Busque el cliente por DNI o Id Socio", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, sectionAdministrar::class.java)
@@ -77,16 +90,6 @@ class DetalleCliente : AppCompatActivity() {
             Utils.gradientPostProcessing(btn)
         }
 
-
-        findViewById<Button>(R.id.inscribirActividad).setOnClickListener {
-            val intent = Intent(this, actividades::class.java)
-            startActivity(intent)
-        }
-
-        findViewById<Button>(R.id.registarPago).setOnClickListener {
-            val intent = Intent(this, registro_pago::class.java)
-            startActivity(intent)
-        }
 
     }
 
