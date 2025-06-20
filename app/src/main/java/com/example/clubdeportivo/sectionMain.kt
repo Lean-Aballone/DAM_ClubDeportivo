@@ -4,23 +4,27 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.example.clubdeportivo.entidades.User
 import com.google.android.material.navigation.NavigationView
 
 class sectionMain : AppCompatActivity() {
 
     private lateinit var drawerLayout: DrawerLayout
+    private val usuario = SessionManager.currentUser
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_section_main)
-
+        val userDetails = findViewById<TextView>(R.id.userDetails)
+        userDetails.text = usuario?.nombre.toString() + " (" + usuario?.rol.toString() + ")"
         drawerLayout = findViewById(R.id.main)
         val btnOpenDrawer: ImageButton = findViewById(R.id.btn_open_drawer)
 
