@@ -57,10 +57,10 @@ class DetalleCliente : AppCompatActivity() {
             dni.text = "DNI:" + cliente.dni.toString()
             telefono.text = "Teléfono: " + cliente.telefono
             direccion.text = "Dirección: " + cliente.direccion
-            Log.d("test", cliente.fechaInscripcion.toString())
-            val formato = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
-            val fechaFormateada = formato.format(cliente.fechaInscripcion)
-            fechaInscripcion.text = fechaFormateada
+
+            val outputFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+            val formattedDate = outputFormat.format(cliente.fechaInscripcion)
+            fechaInscripcion.text = "Fecha Inscripcion: " + formattedDate
         } else {
             Toast.makeText(this, "Ha ocurrido un error. Busque el cliente por DNI o Id Socio", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, sectionAdministrar::class.java)
@@ -72,6 +72,11 @@ class DetalleCliente : AppCompatActivity() {
             findViewById<Button>(R.id.registarPago),
             findViewById<Button>(R.id.inscribirActividad)
         )
+
+        for (btn in buttons) {
+            Utils.gradientPostProcessing(btn)
+        }
+
 
         findViewById<Button>(R.id.inscribirActividad).setOnClickListener {
             val intent = Intent(this, actividades::class.java)
@@ -85,22 +90,6 @@ class DetalleCliente : AppCompatActivity() {
 
     }
 
-    fun makeButtonGraddient(button: Button){
-        button.post {
-            val width = button.paint.measureText(button.text.toString()) + button.paddingStart.toFloat()
-            val textShader = LinearGradient(
-                0f, 0f, width, 0f,
-                intArrayOf(
-                    0xFF00FFFF.toInt(), // #0FF
-                    0xFFFF00FF.toInt() // #F0F
-                ),
-                null,
-                Shader.TileMode.CLAMP
-            )
-            button.paint.shader = textShader
-            button.invalidate()
-        }
-    }
 
     fun returnToMain(view: View){
         val intent = Intent(this, sectionMain::class.java)
