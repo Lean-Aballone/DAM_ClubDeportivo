@@ -13,6 +13,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import android.widget.Toast
+
 
 class sectionActividad : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,12 +43,18 @@ class sectionActividad : AppCompatActivity() {
         button.setOnClickListener {
             val intent = Intent(this, actividades::class.java)
             when(spinner.selectedItemId){
-                //DNI
-                0L -> intent.putExtra("DNI", infoSocio.getText().toString())
-                //ID converted to DNI
-                1L -> intent.putExtra("DNI", dbHelper.getClienteByDNIorId("ID",infoSocio.getText().toString().toInt()).dni.toString())
+                0L -> intent.putExtra("DNI", infoSocio.text.toString())
+                1L -> {
+                    val cliente = dbHelper.getClienteByDNIorId("ID", infoSocio.text.toString().toInt())
+                    if (cliente != null) {
+                        intent.putExtra("DNI", cliente.dni.toString())
+                        startActivity(intent)
+                    } else {
+                        Toast.makeText(this, "No se encontró ningún cliente con ese ID", Toast.LENGTH_SHORT).show()
+                    }
+                }
             }
-            startActivity(intent)
+            if (spinner.selectedItemId == 0L) startActivity(intent)
         }
     }
     fun returnToMain(view: View){
