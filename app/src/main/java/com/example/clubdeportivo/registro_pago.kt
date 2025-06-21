@@ -82,8 +82,6 @@ class registro_pago : AppCompatActivity() {
 
             button.setOnClickListener {
                 val fechaPago = campoFecha.text.toString()
-                val formatter = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
-                val parsedDate: Date? = formatter.parse(fechaPago)
 
                 val formaPago: String = if (campoEfectivo.isChecked) {"Efectivo"} else {"Tarjeta"}
                 val monto = campoMonto.text.toString().toIntOrNull() ?: 0
@@ -100,11 +98,13 @@ class registro_pago : AppCompatActivity() {
                     mes = spinnerMes.selectedItem.toString()
                 }
 
-                if (monto < 1 || parsedDate == null) {
+                if (monto < 1 || fechaPago == null) {
                     Toast.makeText(this, "Complete todos los datos del formulario. Ingrese un monto y una fecha valida.", Toast.LENGTH_SHORT).show()
                 } else {
+                    val inputFormat = SimpleDateFormat("ydd-MM-yyyy", Locale.getDefault())
+                    val fecha: Date = inputFormat.parse(fechaPago)!!
 
-                    if (pagosHelper.ingresarPago(idCliente,monto,mes,idActividad,formaPago,parsedDate)) {
+                    if (pagosHelper.ingresarPago(idCliente,monto,mes,idActividad,formaPago,fecha)) {
                         Toast.makeText(this, "El pago se ha registrado correctamente.", Toast.LENGTH_SHORT).show()
 
                         val intent = Intent(this, DetalleCliente::class.java)
