@@ -73,7 +73,7 @@ class sectionInscripcion : AppCompatActivity() {
             if (!editAptoFisico.isChecked) {
                 Toast.makeText(this, "Para registrar un nuevo cliente, el mismo debe presentar el apto fisico.", Toast.LENGTH_SHORT).show()
             } else if (dni < 99999 || nombre.isNullOrBlank()  || apellido.isNullOrBlank()  || telefono.isNullOrBlank() || direccion.isNullOrBlank() ) {
-                Toast.makeText(this, "Complete todos los datos del formulario.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Complete todos los datos del formulario. El DNI debe ser valido.", Toast.LENGTH_SHORT).show()
             } else {
                 if (clientesHelper.inscribirCliente(nombre, apellido, dni, telefono, direccion, aptoFisico, socio)) {
                     val dataCliente = clientesHelper.getClienteByDNIorId("DNI", dni)
@@ -88,7 +88,7 @@ class sectionInscripcion : AppCompatActivity() {
                             this,"Ha ocurrido un error. Vuelva a intentarlo",Toast.LENGTH_SHORT).show()
                     }
                 } else {
-                    Toast.makeText(this,"El cliente no se ha podido registrar.",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this,"El cliente no se ha podido registrar. Verifique que el DNI no se encuentre registrado previamente.",Toast.LENGTH_SHORT).show()
                 }
 
             }

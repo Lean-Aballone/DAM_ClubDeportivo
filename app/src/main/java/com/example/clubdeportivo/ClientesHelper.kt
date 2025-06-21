@@ -4,6 +4,8 @@ import android.content.ContentValues
 import android.content.Context
 import com.example.clubdeportivo.entidades.Cliente
 import java.util.Date
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class ClientesHelper(context: Context): DBHelper(context) {
 
@@ -47,7 +49,9 @@ class ClientesHelper(context: Context): DBHelper(context) {
             val direccion = cursor.getString(5)
             val aptoFisico = cursor.getInt(6) != 0
             val socio = cursor.getInt(7) != 0
-            val fechaInscripcion = Date(cursor.getLong(8))
+            val fechaInscripcion = cursor.getString(8)
+
+            val formatter = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
 
             cliente = Cliente(
                 id = id,
@@ -58,10 +62,44 @@ class ClientesHelper(context: Context): DBHelper(context) {
                 direccion = direccion,
                 aptoFisico = aptoFisico,
                 socio = socio,
-                fechaInscripcion = fechaInscripcion
+                fechaInscripcion = formatter.parse(fechaInscripcion)
             )
         }
         cursor.close()
         return cliente
+    }
+
+    fun getAllClients(): List<Cliente>{
+        val clientList = mutableListOf<Cliente>()
+        val db = readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM clientes",null)
+        if (cursor.moveToFirst()) {
+            do {
+                val id = cursor.getInt(0)
+                val nombre = cursor.getString(1)
+                val apellido = cursor.getString(2)
+                val dni = cursor.getInt(3)
+                val telefono = cursor.getString(4)
+                val direccion = cursor.getString(5)
+                val aptoFisico = cursor.getInt(6) != 0
+                val socio = cursor.getInt(7) != 0
+                val fechaInscripcion = Date(cursor.getLong(8))
+
+                val cliente = Cliente(
+                    id = id,
+                    nombre = nombre,
+                    apellido = apellido,
+                    dni = dni,
+                    telefono = telefono,
+                    direccion = direccion,
+                    aptoFisico = aptoFisico,
+                    socio = socio,
+                    fechaInscripcion = fechaInscripcion
+                )
+                clientList.add(cliente)
+            }  while (cursor.moveToNext())
+        }
+        cursor.close()
+        return clientList
     }
 }
