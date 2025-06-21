@@ -1,14 +1,10 @@
 package com.example.clubdeportivo
 
 import android.content.Intent
-import android.graphics.LinearGradient
-import android.graphics.Shader
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -17,7 +13,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.clubdeportivo.entidades.Cliente
 import java.text.SimpleDateFormat
-import java.util.Date
 import java.util.Locale
 
 class DetalleCliente : AppCompatActivity() {
@@ -36,11 +31,6 @@ class DetalleCliente : AppCompatActivity() {
         } else {
             @Suppress("DEPRECATION")
             intent.getSerializableExtra("cliente") as? Cliente
-        }
-
-
-        cliente?.let {
-            Log.d("test Cliente", "Nombre: ${it.nombre}, DNI: ${it.dni}")
         }
 
 
@@ -70,7 +60,7 @@ class DetalleCliente : AppCompatActivity() {
 
             findViewById<Button>(R.id.registarPago).setOnClickListener {
                 val intent = Intent(this, registro_pago::class.java)
-                intent.putExtra("IdCliente", cliente.id)
+                intent.putExtra("cliente", cliente)
                 startActivity(intent)
             }
 
@@ -89,7 +79,6 @@ class DetalleCliente : AppCompatActivity() {
         for (btn in buttons) {
             Utils.gradientPostProcessing(btn)
         }
-
 
     }
 
