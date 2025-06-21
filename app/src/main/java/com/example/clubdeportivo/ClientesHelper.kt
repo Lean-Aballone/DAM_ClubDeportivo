@@ -102,4 +102,48 @@ class ClientesHelper(context: Context): DBHelper(context) {
         cursor.close()
         return clientList
     }
+
+    fun getAllSociosDeudores(): List<Cliente>{
+        val clientList = mutableListOf<Cliente>()
+        val db = readableDatabase
+        val query = """
+            SELECT clientes.*, pagos.UltimoPago FROM clientes LEFT JOIN (
+                SELECT IdCliente, MAX(FechaPago) AS UltimoPago
+                FROM pagos
+                GROUP BY IdCliente
+            ) pagos ON clientes.id = pagos.IdCliente 
+            WHERE socio = 1 AND (pagos.UltimoPago IS NULL OR pagos.UltimoPago < datetime('now', '-1 month'));
+        """.trimIndent()
+        val cursor = db.rawQuery(query,null)
+        if (cursor.moveToFirst()) {
+            do {
+                val id = cursor.getInt(0)
+                val nombre = cursor.getString(1)
+                val apellido = cursor.getString(2)
+                val dni = cursor.getInt(3)
+                val telefono = cursor.getString(4)
+                val direccion = cursor.getString(5)
+                val aptoFisico = cursor.getInt(6) != 0
+                val socio = cursor.getInt(7) != 0
+                val fechaInscripcion = cursor.getString(8)
+
+                val formatter = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+
+                val cliente = Cliente(
+                    id = id,
+                    nombre = nombre,
+                    apellido = apellido,
+                    dni = dni,
+                    telefono = telefono,
+                    direccion = direccion,
+                    aptoFisico = aptoFisico,
+                    socio = socio,
+                    fechaInscripcion = formatter.parse(fechaInscripcion)
+                )
+                clientList.add(cliente)
+            }  while (cursor.moveToNext())
+        }
+        cursor.close()
+        return clientList
+    }
 }

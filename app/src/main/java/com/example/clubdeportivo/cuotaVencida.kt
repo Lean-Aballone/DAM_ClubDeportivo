@@ -27,7 +27,7 @@ class cuotaVencida : AppCompatActivity() {
 
     fun getSociosFromDb(){
         val listView = findViewById<ListView>(R.id.clientsList)
-        val list = dbHelper.getAllClients()
+        val list = dbHelper.getAllSociosDeudores()
         val adapter = ClienteAdapter(this, list)
         listView.adapter = adapter
     }
