@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.EditText
 import android.widget.Spinner
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -24,33 +25,27 @@ class sectionActividad : AppCompatActivity() {
             insets
         }
         val spinner: Spinner = findViewById(R.id.spinner)
-        val listItems = listOf("DNI", "test")
+        val listItems = listOf("DNI", "ID")
         val adapter = ArrayAdapter(
             this,
             R.layout.spinner_item_closed,
             listItems
         )
 
-
         adapter.setDropDownViewResource(R.layout.spinner_item_dropdown)
         spinner.adapter = adapter
         val button = findViewById<Button>(R.id.button)
-        button.post {
-            val width = button.paint.measureText(button.text.toString()) + button.paddingStart.toFloat()
-            val textShader = LinearGradient(
-                0f, 0f, width, 0f,
-                intArrayOf(
-                    0xFF00FFFF.toInt(), // #0FF
-                    0xFFFF00FF.toInt() // #F0F
-                ),
-                null,
-                Shader.TileMode.CLAMP
-            )
-            button.paint.shader = textShader
-            button.invalidate()
-        }
+        Utils.gradientPostProcessing(button)
+        val infoSocio = findViewById<EditText>(R.id.socioIdentificationField)
+        val dbHelper = ClientesHelper(this)
         button.setOnClickListener {
             val intent = Intent(this, actividades::class.java)
+            when(spinner.selectedItemId){
+                //DNI
+                0L -> intent.putExtra("DNI", infoSocio.getText().toString())
+                //ID converted to DNI
+                1L -> intent.putExtra("DNI", dbHelper.getClienteByDNIorId("ID",infoSocio.getText().toString().toInt()).dni.toString())
+            }
             startActivity(intent)
         }
     }
