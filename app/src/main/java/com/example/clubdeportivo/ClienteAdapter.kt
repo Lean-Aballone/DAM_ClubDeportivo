@@ -50,11 +50,10 @@ class ClienteAdapter(private val context: Context, private val clientes: List<Cl
         }
 
         btnAcciones.setOnClickListener {
-            // TODO: Redirigir a Pago cuota
-            Toast.makeText(context, "Acciones para ${cliente.nombre}", Toast.LENGTH_SHORT).show()
-//            val intent = Intent(this, registro_pago::class.java)
-//            intent.putExtra("cliente", cliente)
-//            startActivity(intent)
+            Toast.makeText(context, "Registrar pago para ${cliente.nombre}", Toast.LENGTH_SHORT).show()
+            val intent = Intent(context, registro_pago::class.java)
+            intent.putExtra("cliente", cliente)
+            context.startActivity(intent)
         }
 
         return view
