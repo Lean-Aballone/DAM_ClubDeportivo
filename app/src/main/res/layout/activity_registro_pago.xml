@@ -22,6 +22,7 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:contentDescription="Club Deportivo"
                 android:padding="2dp"
                 android:layout_weight="1"
                 android:layout_width="75dp"
@@ -43,6 +44,7 @@
                 android:layout_marginBottom="0dp"
                 android:layout_weight="0"
                 android:backgroundTint="#00FFFFFF"
+                android:contentDescription="Home"
                 android:onClick="returnToMain"
                 android:padding="10dp"
                 app:srcCompat="@drawable/ic_home" />
@@ -87,12 +89,13 @@
                     android:text="Fecha:" />
 
                 <EditText
-                    android:id="@+id/editTextDate"
+                    android:id="@+id/fechaPago"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginBottom="20dp"
                     android:background="#BDBDBD"
                     android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
                     android:selectAllOnFocus="false"
                     android:textColor="@android:color/black"
                     android:textColorHint="#666"
@@ -108,49 +111,96 @@
                     android:text="Monto:" />
 
                 <EditText
-                    android:id="@+id/editTextNumberSigned"
+                    android:id="@+id/monto"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginBottom="20dp"
                     android:background="#BDBDBD"
                     android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
                     android:selectAllOnFocus="false"
                     android:textColor="@android:color/black"
                     android:textColorHint="#666"
                     android:inputType="numberSigned" />
 
-                <TextView
-                    android:id="@+id/textViewMes"
+<!--            se muestra solo si el cliente es socio     -->
+                <LinearLayout
+                    android:id="@+id/formLayoutMes"
+                    android:orientation="vertical"
+                    android:visibility="gone"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:text="Mes:" />
+                    android:layout_height="wrap_content">
 
-                <EditText
-                    android:id="@+id/editTextDate2"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginBottom="20dp"
-                    android:background="#BDBDBD"
-                    android:paddingStart="10dp"
-                    android:selectAllOnFocus="false"
-                    android:textColor="@android:color/black"
-                    android:textColorHint="#666"
-                    android:inputType="date" />
+                    <TextView
+                        android:id="@+id/textViewMes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:text="Mes:" />
 
-                <CheckBox
-                    android:id="@+id/checkBox2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Efectivo" />
+                    <Spinner
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:id="@+id/spinnerMes"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/spinner_background"
+                        android:popupBackground="@android:color/white" />
 
-                <CheckBox
-                    android:id="@+id/checkBox3"
+                </LinearLayout>
+
+
+<!--            se muestra solo si el cliente NO es socio     -->
+                <LinearLayout
+                    android:id="@+id/formLayoutActividad"
+                    android:orientation="vertical"
+                    android:visibility="gone"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Tarjeta" />
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textViewActividad"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:text="Actividad:" />
+
+                    <Spinner
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:id="@+id/spinnerActividad"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/spinner_background"
+                        android:popupBackground="@android:color/white" />
+
+                </LinearLayout>
+
+
+                <RadioGroup
+                    android:id="@+id/formaPago"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <RadioButton
+                        android:id="@+id/formaPago_efectivo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Efectivo" />
+
+                    <RadioButton
+                        android:id="@+id/formaPago_tarjeta"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tarjeta" />
+
+                </RadioGroup>
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button"

@@ -1,6 +1,7 @@
 package com.example.clubdeportivo
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,8 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import com.example.clubdeportivo.entidades.Cliente
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class ClienteAdapter(private val context: Context, private val clientes: List<Cliente>) : BaseAdapter() {
 
@@ -31,12 +34,16 @@ class ClienteAdapter(private val context: Context, private val clientes: List<Cl
         val extraInfoLayout = view.findViewById<LinearLayout>(R.id.extraInfoLayout)
         val btnAcciones = view.findViewById<ImageButton>(R.id.btnAcciones)
 
+
+        val outputFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+        val formattedDate = outputFormat.format(cliente.fechaInscripcion)
+
         nombreApellido.text = "${cliente.nombre} ${cliente.apellido}"
         dni.text = "DNI: ${cliente.dni}"
         telefono.text = "Tel: ${cliente.telefono}"
         direccion.text = "Dirección: ${cliente.direccion}"
         aptoFisico.text = if (cliente.aptoFisico) "Apto físico: Sí" else "Apto físico: No"
-        fechaInscripcion.text = "Inscripción: ${cliente.fechaInscripcion}"
+        fechaInscripcion.text = "Inscripción: ${formattedDate}"
 
         view.setOnClickListener {
             extraInfoLayout.visibility = if (extraInfoLayout.visibility == View.VISIBLE) View.GONE else View.VISIBLE
@@ -45,6 +52,9 @@ class ClienteAdapter(private val context: Context, private val clientes: List<Cl
         btnAcciones.setOnClickListener {
             // TODO: Redirigir a Pago cuota
             Toast.makeText(context, "Acciones para ${cliente.nombre}", Toast.LENGTH_SHORT).show()
+//            val intent = Intent(this, registro_pago::class.java)
+//            intent.putExtra("cliente", cliente)
+//            startActivity(intent)
         }
 
         return view
