@@ -12,5 +12,5 @@ data class Cliente(
     val direccion: String,
     val aptoFisico: Boolean,
     val socio: Boolean,
-    val fechaInscripcion: Date
+    val fechaInscripcion: Date?
 ) : Serializable

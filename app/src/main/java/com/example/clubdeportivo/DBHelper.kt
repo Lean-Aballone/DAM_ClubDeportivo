@@ -115,6 +115,10 @@ open class DBHelper(context: Context?): SQLiteOpenHelper(context,"ClubDeportivoD
         db.execSQL("DROP TABLE IF EXISTS roles")
         db.execSQL("DROP TABLE IF EXISTS usuario")
         db.execSQL("DROP TABLE IF EXISTS clientes")
+        db.execSQL("DROP TABLE IF EXISTS roles")
+        db.execSQL("DROP TABLE IF EXISTS actividades")
+        db.execSQL("DROP TABLE IF EXISTS cliente_actividad")
+        db.execSQL("DROP TABLE IF EXISTS deportes")
         onCreate(db)
     }
 }

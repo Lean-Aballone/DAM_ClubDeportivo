@@ -22,6 +22,7 @@
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:contentDescription="Club Deportivo"
             app:srcCompat="@drawable/loginicon" />
 
         <Space
@@ -38,6 +39,7 @@
             android:layout_marginBottom="0dp"
             android:layout_weight="0"
             android:backgroundTint="#00FFFFFF"
+            android:contentDescription="Home"
             android:onClick="returnToMain"
             android:padding="10dp"
             app:srcCompat="@drawable/ic_home" />
@@ -90,7 +92,7 @@
                     android:id="@+id/nombreApellido"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Nombre Apellido"
+                    android:text=""
                     android:textSize="28sp"
                     android:textStyle="bold"
                     android:textColor="#FFFFFF"
@@ -101,7 +103,7 @@
                     android:id="@+id/socio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Socio: 123"
+                    android:text=""
                     android:textColor="#CCCCCC"
                     android:textSize="18sp"
                     android:layout_marginBottom="8dp" />
@@ -110,7 +112,7 @@
                     android:id="@+id/fechaInscripcion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Fecha de inscripción: 2023-01-01"
+                    android:text=""
                     android:textColor="#CCCCCC"
                     android:textSize="18sp"
                     android:layout_marginBottom="8dp" />
@@ -119,7 +121,7 @@
                     android:id="@+id/telefono"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Teléfono: 123456789"
+                    android:text=""
                     android:textColor="#CCCCCC"
                     android:textSize="18sp"
                     android:layout_marginBottom="8dp" />
@@ -128,7 +130,7 @@
                     android:id="@+id/dni"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="DNI: 98765432"
+                    android:text=""
                     android:textColor="#CCCCCC"
                     android:textSize="18sp"
                     android:layout_marginBottom="8dp" />
@@ -137,7 +139,7 @@
                     android:id="@+id/direccion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Dirección: Calle Falsa 123"
+                    android:text=""
                     android:textColor="#CCCCCC"
                     android:textSize="18sp"
                     android:layout_marginBottom="8dp" />
