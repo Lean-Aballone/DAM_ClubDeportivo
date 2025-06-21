@@ -127,9 +127,9 @@ open class DBHelper(context: Context?): SQLiteOpenHelper(context,"ClubDeportivoD
 
         val insertIntoPagos = """
             INSERT INTO pagos (IdCliente, Monto, Mes, IdActividad, FormaPago, FechaPago) VALUES
-            (1, 5400, 'Mayo', 0, 'Tarjeta', '2025-05-15'),
-            (2, 3000, 'Mayo', 3, 'Efectivo', '2025-05-22'),
-            (3, 5400, 'Abril', 0, 'Efectivo', '2025-04-10');
+            (1, 5400, 'Mayo', 0, 'Tarjeta', '2025-05-05 00:00:00'),
+            (2, 3000, '', 3, 'Efectivo', '2025-06-21 00:00:00'),
+            (3, 5400, 'Abril', 0, 'Efectivo', '2025-04-20 00:00:00');
         """.trimIndent()
 
         // Orden en el cual se ejecutarán las sentencias.
