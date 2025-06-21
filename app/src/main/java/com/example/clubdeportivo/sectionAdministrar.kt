@@ -47,7 +47,7 @@ class sectionAdministrar : AppCompatActivity() {
 
         button.setOnClickListener {
             val selectedType = spinner.selectedItem.toString()
-            val searchValue = findViewById<EditText>(R.id.searchValue).text.toString()
+            val searchValue = findViewById<EditText>(R.id.socioIdentificationField).text.toString()
             val value = searchValue.toIntOrNull() ?: 0
             if (value < 1) {
                 Toast.makeText(this, "Ingrese el número de $selectedType", Toast.LENGTH_SHORT).show()
