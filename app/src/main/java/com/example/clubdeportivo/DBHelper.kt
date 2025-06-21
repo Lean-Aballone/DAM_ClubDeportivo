@@ -27,7 +27,7 @@ open class DBHelper(context: Context?): SQLiteOpenHelper(context,"ClubDeportivoD
 
         val createTableClientes = """
             CREATE TABLE clientes (
-                Id INTEGER PRIMARY KEY,
+                Id INTEGER PRIMARY KEY AUTOINCREMENT,
                 Nombre TEXT,
                 Apellido TEXT,
                 DNI INTEGER UNIQUE,
@@ -51,6 +51,14 @@ open class DBHelper(context: Context?): SQLiteOpenHelper(context,"ClubDeportivoD
             ('Usuario_a', 'a', 99),
             ('Usuario_b', 'b', 100),
             ('Usuario_c', 'c', 101);
+        """.trimIndent()
+
+
+        val insertIntoClientes = """
+            INSERT INTO clientes (Nombre, Apellido, DNI, Telefono, Direccion, AptoFisico, Socio) VALUES
+            ('Jose', 'Perez', 11111111, '(011) 1111-1111', 'Test 1111', 1, 1),
+            ('Maria', 'Diaz', 22222222, '(011) 2222-2222', 'Test 2222', 1, 0),
+            ('Juan', 'Lopez', 33333333, '(011) 3333-3333', 'Test 3333', 1, 1);
         """.trimIndent()
 
         val createTableActividades = """
@@ -102,8 +110,30 @@ open class DBHelper(context: Context?): SQLiteOpenHelper(context,"ClubDeportivoD
             FOREIGN KEY (IdActividad) REFERENCES actividades(Id) );
         """.trimIndent()
 
+
+        val createTablePagos = """
+            CREATE TABLE pagos (
+                Id INTEGER PRIMARY KEY,
+                IdCliente INTEGER,
+                Monto INTEGER,
+                Mes TEXT,
+                IdActividad INTEGER,
+                FormaPago TEXT,
+                FechaPago DATETIME DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (IdCliente) REFERENCES clientes(Id),
+                FOREIGN KEY (IdActividad) REFERENCES actividades(Id) );
+        """.trimIndent()
+
+
+        val insertIntoPagos = """
+            INSERT INTO pagos (IdCliente, Monto, Mes, IdActividad, FormaPago, FechaPago) VALUES
+            (1, 5400, 'Mayo', 0, 'Tarjeta', '2025-05-15'),
+            (2, 3000, 'Mayo', 3, 'Efectivo', '2025-05-22'),
+            (3, 5400, 'Abril', 0, 'Efectivo', '2025-04-10');
+        """.trimIndent()
+
         // Orden en el cual se ejecutarán las sentencias.
-        val sql = arrayOf(createTableRoles,insertIntoRoles,createTableUsuario,insertIntoUsuario, createTableClientes, createTableActividades, createTableDeportes, insertIntoDeportes, insertIntoActividades, createTableClienteActividad)
+        val sql = arrayOf(createTableRoles,insertIntoRoles,createTableUsuario,insertIntoUsuario, createTableClientes, createTableActividades, createTableDeportes, insertIntoDeportes, insertIntoActividades, createTableClienteActividad, createTablePagos, insertIntoClientes, insertIntoPagos)
         sql.forEach { query ->  db.execSQL(query)}
     }
 
@@ -115,6 +145,10 @@ open class DBHelper(context: Context?): SQLiteOpenHelper(context,"ClubDeportivoD
         db.execSQL("DROP TABLE IF EXISTS roles")
         db.execSQL("DROP TABLE IF EXISTS usuario")
         db.execSQL("DROP TABLE IF EXISTS clientes")
+        db.execSQL("DROP TABLE IF EXISTS actividades")
+        db.execSQL("DROP TABLE IF EXISTS cliente_actividad")
+        db.execSQL("DROP TABLE IF EXISTS deportes")
+        db.execSQL("DROP TABLE IF EXISTS pagos")
         onCreate(db)
     }
 }
