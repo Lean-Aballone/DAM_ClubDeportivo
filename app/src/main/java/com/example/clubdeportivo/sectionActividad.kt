@@ -40,7 +40,15 @@ class sectionActividad : AppCompatActivity() {
         Utils.gradientPostProcessing(button)
         val infoSocio = findViewById<EditText>(R.id.socioIdentificationField)
         val dbHelper = ClientesHelper(this)
+
         button.setOnClickListener {
+            val input = infoSocio.text.toString()
+
+            if (input.isBlank() || !input.matches(Regex("\\d+"))) {
+                Toast.makeText(this, "Ingrese un número válido", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             val intent = Intent(this, actividades::class.java)
             when(spinner.selectedItemId){
                 //DNI
@@ -59,6 +67,7 @@ class sectionActividad : AppCompatActivity() {
                         startActivity(intent)
                     }
                     ?: run { Toast.makeText(this, "No se encontró ningún cliente con ese ID", Toast.LENGTH_SHORT).show() }
+                else -> Toast.makeText(this, "Debe ingresar una forma de indentificación", Toast.LENGTH_SHORT).show()
             }
         }
     }
