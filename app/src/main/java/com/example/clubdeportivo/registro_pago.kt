@@ -101,7 +101,7 @@ class registro_pago : AppCompatActivity() {
                 if (monto < 1 || fechaPago == null) {
                     Toast.makeText(this, "Complete todos los datos del formulario. Ingrese un monto y una fecha valida.", Toast.LENGTH_SHORT).show()
                 } else {
-                    val inputFormat = SimpleDateFormat("ydd-MM-yyyy", Locale.getDefault())
+                    val inputFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
                     val fecha: Date = inputFormat.parse(fechaPago)!!
 
                     if (pagosHelper.ingresarPago(idCliente,monto,mes,idActividad,formaPago,fecha)) {

@@ -2,7 +2,6 @@ package com.example.clubdeportivo
 
 import android.content.ContentValues
 import android.content.Context
-import com.example.clubdeportivo.entidades.Pago
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
