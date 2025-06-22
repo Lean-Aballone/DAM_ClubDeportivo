@@ -4,7 +4,7 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
-open class DBHelper(context: Context?): SQLiteOpenHelper(context,"ClubDeportivoDB",null,2){
+open class DBHelper(context: Context?): SQLiteOpenHelper(context,"ClubDeportivoDB",null,3){
 
     override fun onCreate(db: SQLiteDatabase) {
         val createTableRoles = """
@@ -35,7 +35,7 @@ open class DBHelper(context: Context?): SQLiteOpenHelper(context,"ClubDeportivoD
                 Direccion TEXT,
                 AptoFisico BOOLEAN,
                 Socio BOOLEAN,
-                FechaInscripcion DATETIME DEFAULT CURRENT_TIMESTAMP
+                FechaInscripcion DATETIME DEFAULT (datetime('now', 'localtime'))
             );
         """.trimIndent()
 
