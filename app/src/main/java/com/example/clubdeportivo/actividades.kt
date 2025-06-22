@@ -37,11 +37,10 @@ class actividades : AppCompatActivity() {
         }
         val button = findViewById<Button>(R.id.button)
         Utils.gradientPostProcessing(button)
-
         val gridView: GridView = findViewById(R.id.gridView)
 
         val dbHelper = ActividadesHelper(this)
-        val idCliente = intent.getIntExtra("IdCliente", -1)
+        val idCliente = intent.getIntExtra("DNI", -1)
 
         val actividadesList = dbHelper.getActividadesList()
         val actividadesInscripto = if (idCliente != -1) dbHelper.getIdsActividadesDeCliente(idCliente) else emptyList()

@@ -40,23 +40,38 @@ class sectionActividad : AppCompatActivity() {
         Utils.gradientPostProcessing(button)
         val infoSocio = findViewById<EditText>(R.id.socioIdentificationField)
         val dbHelper = ClientesHelper(this)
+
         button.setOnClickListener {
+            val input = infoSocio.text.toString()
+
+            if (input.isBlank() || !input.matches(Regex("\\d+"))) {
+                Toast.makeText(this, "Ingrese un número válido", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             val intent = Intent(this, actividades::class.java)
             when(spinner.selectedItemId){
-                0L -> intent.putExtra("DNI", infoSocio.text.toString())
-                1L -> {
-                    val cliente = dbHelper.getClienteByDNIorId("ID", infoSocio.text.toString().toInt())
-                    if (cliente != null) {
-                        intent.putExtra("DNI", cliente.dni.toString())
+                //DNI
+                0L -> dbHelper.getClienteByDNIorId("DNI", infoSocio.text.toString().toInt())
+                    ?.dni
+                    ?.also {
+                        intent.putExtra("DNI", it)
                         startActivity(intent)
-                    } else {
-                        Toast.makeText(this, "No se encontró ningún cliente con ese ID", Toast.LENGTH_SHORT).show()
                     }
-                }
+                    ?: run { Toast.makeText(this, "No se encontró ningún cliente con ese DNI", Toast.LENGTH_SHORT).show() }
+                //ID
+                1L -> dbHelper.getClienteByDNIorId("ID",infoSocio.text.toString().toInt())
+                    ?.dni
+                    ?.also {
+                        intent.putExtra("DNI", it)
+                        startActivity(intent)
+                    }
+                    ?: run { Toast.makeText(this, "No se encontró ningún cliente con ese ID", Toast.LENGTH_SHORT).show() }
+                else -> Toast.makeText(this, "Debe ingresar una forma de indentificación", Toast.LENGTH_SHORT).show()
             }
-            if (spinner.selectedItemId == 0L) startActivity(intent)
         }
     }
+
     fun returnToMain(view: View){
         val intent = Intent(this, sectionMain::class.java)
         startActivity(intent)
