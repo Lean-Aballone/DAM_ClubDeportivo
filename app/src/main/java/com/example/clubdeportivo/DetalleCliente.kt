@@ -5,6 +5,7 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -33,7 +34,7 @@ class DetalleCliente : AppCompatActivity() {
             intent.getSerializableExtra("cliente") as? Cliente
         }
 
-
+        val indicadorCuotasAlDia = findViewById<LinearLayout>(R.id.contentLayoutDatos)
         val nombre = findViewById<TextView>(R.id.nombreApellido)
         val dni = findViewById<TextView>(R.id.dni)
         val fechaInscripcion = findViewById<TextView>(R.id.fechaInscripcion)
@@ -42,6 +43,7 @@ class DetalleCliente : AppCompatActivity() {
         val socio = findViewById<TextView>(R.id.socio)
 
         if (cliente != null) {
+            if (ClientesHelper(this).esDeudor(cliente)) indicadorCuotasAlDia.setBackgroundResource(R.drawable.red_gradient)
             socio.text = if(cliente.socio) { "Socio ID:" + cliente.id.toString() } else {"Cliente ID: " + cliente.id.toString()}
             nombre.text = cliente.nombre + " " + cliente.apellido
             dni.text = "DNI:" + cliente.dni.toString()
