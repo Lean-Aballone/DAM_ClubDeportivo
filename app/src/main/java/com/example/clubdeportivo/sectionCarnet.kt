@@ -1,5 +1,6 @@
 package com.example.clubdeportivo
 
+import android.content.Intent
 import android.graphics.pdf.PdfDocument
 import android.os.Bundle
 import android.view.View
@@ -15,6 +16,8 @@ import com.example.clubdeportivo.entidades.Cliente
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class sectionCarnet : AppCompatActivity() {
 
@@ -31,28 +34,41 @@ class sectionCarnet : AppCompatActivity() {
         }
         cliente = intent.getSerializableExtra("cliente") as Cliente
 
-        val tvTitulo = findViewById<TextView>(R.id.tvTitulo)
-        val tvNombre = findViewById<TextView>(R.id.tvNombre)
-        val tvDni = findViewById<TextView>(R.id.tvDni)
-        val tvTelefono = findViewById<TextView>(R.id.tvTelefono)
-        val tvDireccion = findViewById<TextView>(R.id.tvDireccion)
-        val tvFecha = findViewById<TextView>(R.id.tvFecha)
-        val tvApto = findViewById<TextView>(R.id.tvApto)
-        val btnGuardarPdf = findViewById<Button>(R.id.btnGuardarPdf)
-        val textComponents = arrayOf(tvTitulo,tvNombre,tvDni,tvTelefono,tvDireccion,tvFecha,tvApto)
+        if (cliente.socio) {
 
-        tvNombre.text = "Nombre: ${cliente.nombre} ${cliente.apellido}"
-        tvDni.text = "DNI: ${cliente.dni}"
-        tvTelefono.text = "Teléfono: ${cliente.telefono}"
-        tvDireccion.text = "Dirección: ${cliente.direccion}"
-        tvFecha.text = "Inscripción: ${cliente.fechaInscripcion?.toString() ?: "No disponible"}"
-        tvApto.text = "Apto físico: ${if (cliente.aptoFisico) "Sí" else "No"}"
+            val tvTitulo = findViewById<TextView>(R.id.tvTitulo)
+            val tvNombre = findViewById<TextView>(R.id.tvNombre)
+            val tvDni = findViewById<TextView>(R.id.tvDni)
+            val tvTelefono = findViewById<TextView>(R.id.tvTelefono)
+            val tvDireccion = findViewById<TextView>(R.id.tvDireccion)
+            val tvFecha = findViewById<TextView>(R.id.tvFecha)
+            val tvApto = findViewById<TextView>(R.id.tvApto)
+            val btnGuardarPdf = findViewById<Button>(R.id.btnGuardarPdf)
+            val textComponents = arrayOf(tvTitulo,tvNombre,tvDni,tvTelefono,tvDireccion,tvFecha,tvApto)
 
-        btnGuardarPdf.setOnClickListener {
-            generarPdf(textComponents)
-            finish()
-            startActivity(getIntent())
+
+            val outputFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+            val formattedDate = outputFormat.format(cliente.fechaInscripcion)
+
+            tvNombre.text = "Nombre: ${cliente.nombre} ${cliente.apellido}"
+            tvDni.text = "DNI: ${cliente.dni}"
+            tvTelefono.text = "Teléfono: ${cliente.telefono}"
+            tvDireccion.text = "Dirección: ${cliente.direccion}"
+            tvFecha.text = "Inscripción: ${formattedDate}"
+            tvApto.text = "Apto físico: ${if (cliente.aptoFisico) "Sí" else "No"}"
+
+            btnGuardarPdf.setOnClickListener {
+                generarPdf(textComponents)
+                finish()
+                startActivity(getIntent())
+            }
+        } else {
+            Toast.makeText(this, "El carnet es exclusivo para Socios.", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, DetalleCliente::class.java)
+            intent.putExtra("cliente", cliente)
+            startActivity(intent)
         }
+
     }
     private fun generarPdf(textComponents: Array<TextView>) {
         val carnetLayout = findViewById<LinearLayout>(R.id.carnetLayout)
