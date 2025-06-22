@@ -50,237 +50,241 @@
                 app:srcCompat="@drawable/ic_home" />
 
         </LinearLayout>
-
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="0dp"
-            android:orientation="vertical"
-            android:paddingStart="60dp"
-            android:paddingEnd="60dp">
-
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:text="Inscribir Cliente"
-                android:textColor="#FFFFFF"
-                android:textSize="25sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/textViewNombre"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:text="Nombre"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/editTextNombre"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginBottom="20dp"
-                android:background="#BDBDBD"
-                android:inputType="text"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                android:selectAllOnFocus="false"
-                android:textColor="@android:color/black"
-                android:textColorHint="#666" />
-
-            <TextView
-                android:id="@+id/textViewApellido"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:text="Apellido"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/editTextApellido"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginBottom="20dp"
-                android:background="#BDBDBD"
-                android:inputType="text"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                android:selectAllOnFocus="false"
-                android:textColor="@android:color/black"
-                android:textColorHint="#666" />
-
-            <TextView
-                android:id="@+id/textViewDNI"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:text="Documento (DNI)"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/editTextDNI"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginBottom="20dp"
-                android:background="#BDBDBD"
-                android:inputType="number|numberSigned"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                android:selectAllOnFocus="false"
-                android:textColor="@android:color/black"
-                android:textColorHint="#666" />
-
-            <TextView
-                android:id="@+id/textViewTelefono"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:text="Telefono"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/editTextTelefono"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginBottom="20dp"
-                android:background="#BDBDBD"
-                android:inputType="text"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                android:selectAllOnFocus="false"
-                android:textColor="@android:color/black"
-                android:textColorHint="#666" />
-
-
-            <TextView
-                android:id="@+id/textViewDireccion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:text="Direccion"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/editTextDireccion"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginBottom="40dp"
-                android:background="#BDBDBD"
-                android:inputType="text"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                android:selectAllOnFocus="false"
-                android:textColor="@android:color/black"
-                android:textColorHint="#666" />
-
-
-
+            android:layout_height="wrap_content">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="match_parent"
+                android:layout_marginStart="0dp"
+                android:orientation="vertical"
+                android:paddingStart="60dp"
+                android:paddingEnd="60dp">
 
-                <androidx.appcompat.widget.SwitchCompat
-                    android:id="@+id/switchCompatAptoFisico"
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:checked="false"
-                    android:textIsSelectable="false"
-                    app:switchPadding="16dp"
-                    app:thumbTint="#FFFFFF"
-                    app:trackTint="@color/colorSwitchOff"
-                    app:trackTintMode="src_in" />
+                    android:layout_marginBottom="20dp"
+                    android:text="Inscribir Cliente"
+                    android:textColor="#FFFFFF"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textViewNombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="Nombre"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/editTextNombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="#BDBDBD"
+                    android:inputType="text"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:selectAllOnFocus="false"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="#666" />
+
+                <TextView
+                    android:id="@+id/textViewApellido"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="Apellido"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/editTextApellido"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="#BDBDBD"
+                    android:inputType="text"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:selectAllOnFocus="false"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="#666" />
+
+                <TextView
+                    android:id="@+id/textViewDNI"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="Documento (DNI)"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/editTextDNI"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="#BDBDBD"
+                    android:inputType="number|numberSigned"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:selectAllOnFocus="false"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="#666" />
+
+                <TextView
+                    android:id="@+id/textViewTelefono"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="Telefono"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/editTextTelefono"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="#BDBDBD"
+                    android:inputType="text"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:selectAllOnFocus="false"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="#666" />
+
+
+                <TextView
+                    android:id="@+id/textViewDireccion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="Direccion"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/editTextDireccion"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="40dp"
+                    android:background="#BDBDBD"
+                    android:inputType="text"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:selectAllOnFocus="false"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="#666" />
+
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switchCompatAptoFisico"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:textIsSelectable="false"
+                        app:switchPadding="16dp"
+                        app:thumbTint="#FFFFFF"
+                        app:trackTint="@color/colorSwitchOff"
+                        app:trackTintMode="src_in" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/AptoFisico"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="0dp"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:text="Apto físico"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/AptoFisicoPresentado"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:text=""
+                            android:textColor="#888"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switchCompatSocio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:textIsSelectable="false"
+                        app:switchPadding="16dp"
+                        app:thumbTint="#FFFFFF"
+                        app:trackTint="@color/colorSwitchOff"
+                        app:trackTintMode="src_in" />
 
                     <TextView
-                        android:id="@+id/AptoFisico"
+                        android:id="@+id/textViewNoSocio"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="0dp"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
-                        android:text="Apto físico"
+                        android:text="No Socio"
                         android:textColor="@color/white"
                         android:textSize="16sp" />
 
-                    <TextView
-                        android:id="@+id/AptoFisicoPresentado"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="16dp"
-                        android:text=""
-                        android:textColor="#888"
-                        android:textSize="16sp" />
                 </LinearLayout>
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <androidx.appcompat.widget.SwitchCompat
-                    android:id="@+id/switchCompatSocio"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="false"
-                    android:textIsSelectable="false"
-                    app:switchPadding="16dp"
-                    app:thumbTint="#FFFFFF"
-                    app:trackTint="@color/colorSwitchOff"
-                    app:trackTintMode="src_in" />
-
-                <TextView
-                    android:id="@+id/textViewNoSocio"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="0dp"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
-                    android:text="No Socio"
-                    android:textColor="@color/white"
-                    android:textSize="16sp" />
+                    android:layout_height="match_parent"
+                    android:layout_margin="0dp"
+                    android:padding="0dp">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:paddingStart="40dp"
+                        android:paddingEnd="40dp"
+                        android:id="@+id/button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/btngradient"
+                        android:text="Inscribir"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
 
             </LinearLayout>
+        </ScrollView>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="0dp"
-                android:padding="0dp">
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:paddingStart="40dp"
-                    android:paddingEnd="40dp"
-                    android:id="@+id/button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/btngradient"
-                    android:text="Inscribir"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        </LinearLayout>
 
     </LinearLayout>
 
