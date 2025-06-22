@@ -1,10 +1,8 @@
 package com.example.clubdeportivo
 
 import android.content.Intent
-import android.graphics.LinearGradient
-import android.graphics.Shader
+import android.content.res.ColorStateList
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -14,6 +12,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.SwitchCompat
+import androidx.core.content.ContextCompat
 import androidx.core.view.WindowInsetsCompat
 
 class sectionInscripcion : AppCompatActivity() {
@@ -42,8 +41,14 @@ class sectionInscripcion : AppCompatActivity() {
         editAptoFisico.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 aptoFisicoPresentado.text = "Presentado"
+                editAptoFisico.trackTintList = ColorStateList.valueOf(
+                    ContextCompat.getColor(this, R.color.colorSwitchOn)
+                )
             } else {
                 aptoFisicoPresentado.text = "No Presentado"
+                editAptoFisico.trackTintList = ColorStateList.valueOf(
+                    ContextCompat.getColor(this, R.color.colorSwitchOff)
+                )
             }
         }
 
@@ -51,8 +56,14 @@ class sectionInscripcion : AppCompatActivity() {
         editSocio.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 textViewNoSocio.text = "Socio"
+                editSocio.trackTintList = ColorStateList.valueOf(
+                    ContextCompat.getColor(this, R.color.colorSwitchOn)
+                )
             } else {
                 textViewNoSocio.text = "No Socio"
+                editSocio.trackTintList = ColorStateList.valueOf(
+                    ContextCompat.getColor(this, R.color.colorSwitchOff)
+                )
             }
         }
 

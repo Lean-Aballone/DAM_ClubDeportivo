@@ -195,7 +195,7 @@
                     android:textIsSelectable="false"
                     app:switchPadding="16dp"
                     app:thumbTint="#FFFFFF"
-                    app:trackTint="#32adc6"
+                    app:trackTint="@color/colorSwitchOff"
                     app:trackTintMode="src_in" />
 
                 <LinearLayout
@@ -241,7 +241,7 @@
                     android:textIsSelectable="false"
                     app:switchPadding="16dp"
                     app:thumbTint="#FFFFFF"
-                    app:trackTint="#32adc6"
+                    app:trackTint="@color/colorSwitchOff"
                     app:trackTintMode="src_in" />
 
                 <TextView
