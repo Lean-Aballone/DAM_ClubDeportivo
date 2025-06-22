@@ -37,6 +37,9 @@
             android:name=".sectionActividad"
             android:exported="false" />
         <activity
+            android:name=".sectionCarnet"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
