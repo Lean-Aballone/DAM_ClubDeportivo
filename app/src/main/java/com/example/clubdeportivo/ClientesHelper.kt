@@ -147,4 +147,24 @@ class ClientesHelper(context: Context): DBHelper(context) {
         cursor.close()
         return clientList
     }
+
+    fun esDeudor(cliente: Cliente): Boolean {
+        val db = readableDatabase
+        val query = """
+        SELECT 1 FROM clientes 
+        LEFT JOIN (
+            SELECT IdCliente, MAX(FechaPago) AS UltimoPago
+            FROM pagos
+            GROUP BY IdCliente
+        ) pagos ON clientes.id = pagos.IdCliente
+        WHERE clientes.id = ? 
+        AND socio = 1 
+        AND (pagos.UltimoPago IS NULL OR pagos.UltimoPago < datetime('now', '-1 month'));
+    """.trimIndent()
+
+        val cursor = db.rawQuery(query, arrayOf(cliente.id.toString()))
+        val esDeudor = cursor.moveToFirst()
+        cursor.close()
+        return esDeudor
+    }
 }

@@ -2,5 +2,6 @@
     <string name="app_name">ClubDeportivo</string>
     <string name="navigation_drawer_open">Abrir menú</string>
     <string name="navigation_drawer_close">Cerrar menú</string>
+    <string name="cuota_vencida"><u>Cuota vencida</u></string>
 
 </resources>
