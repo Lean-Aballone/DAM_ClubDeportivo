@@ -63,6 +63,11 @@ class DetalleCliente : AppCompatActivity() {
             val formattedDate = outputFormat.format(cliente.fechaInscripcion)
             fechaInscripcion.text = "Fecha Inscripcion: " + formattedDate
 
+            if (!cliente.socio) {
+                val buttonCarnet = findViewById<Button>(R.id.imprimirCarnet)
+                buttonCarnet.visibility = View.GONE
+            }
+
             findViewById<Button>(R.id.imprimirCarnet).setOnClickListener {
                 val intent = Intent(this, sectionCarnet::class.java)
                 intent.putExtra("cliente", cliente)
