@@ -54,7 +54,7 @@ class DetalleCliente : AppCompatActivity() {
 
             findViewById<Button>(R.id.inscribirActividad).setOnClickListener {
                 val intent = Intent(this, actividades::class.java)
-                intent.putExtra("IdCliente", cliente.id)
+                intent.putExtra("DNI", cliente.dni)
                 startActivity(intent)
             }
 
