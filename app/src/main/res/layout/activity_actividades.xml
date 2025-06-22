@@ -94,7 +94,7 @@
                 android:background="@drawable/btngradient"
                 android:paddingStart="40dp"
                 android:paddingEnd="40dp"
-                android:text="Ingresar"
+                android:text="Inscribir"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
