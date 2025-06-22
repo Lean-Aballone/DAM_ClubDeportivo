@@ -48,6 +48,7 @@ open class DBHelper(context: Context?): SQLiteOpenHelper(context,"ClubDeportivoD
 
         val insertIntoUsuario = """
             INSERT INTO usuario (NombreUsu, PassUsu, RolUsu) VALUES
+            ('admin', '1234', 99),
             ('Usuario_a', 'a', 99),
             ('Usuario_b', 'b', 100),
             ('Usuario_c', 'c', 101);
